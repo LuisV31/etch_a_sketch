@@ -1,0 +1,12 @@
+.container {
+    width: 960px;
+}
+
+.grid-row {
+    display: flex;
+}
+
+.grid-box {
+    border: 1px solid blue;
+    background-color: yellow;
+}
