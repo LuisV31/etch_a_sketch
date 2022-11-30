@@ -1,14 +1,16 @@
 const resetButton = document.querySelector('button')
 const container = document.querySelector('.container')
-const sizeOfGrid = 16
 
 const createGrid = (numOfGrids) => {
+    const wrapper = document.createElement('div')
+    wrapper.classList.add('wrapper')
+
     for (let i = 0; i < numOfGrids; i++) {
         const row = document.createElement('div')
         row.classList.add('grid-row')
 
         for (let j = 0; j < numOfGrids; j++) {
-            const widthAndHeight = 960 / sizeOfGrid
+            const widthAndHeight = 960 / numOfGrids 
             const gridBox = document.createElement('div')
             gridBox.classList.add('grid-box')
             gridBox.style.width = `${widthAndHeight}px`
@@ -20,8 +22,27 @@ const createGrid = (numOfGrids) => {
             row.appendChild(gridBox)
         }
 
-        container.appendChild(row)
+        wrapper.appendChild(row)
     }
+    container.appendChild(wrapper)
 }
+
+resetButton.addEventListener('click', () => {
+    let userSize = Number(prompt('what dimensions do you want for the new grid'))
+
+    while (userSize > 100) {
+         userSize = Number(prompt('too large! What dimensions do you want for the new grid'))
+    }   
+
+    const wrapper = document.querySelector('.wrapper')
+
+    if (!wrapper) {
+        createGrid(userSize)
+    } else {
+        wrapper.remove()
+        createGrid(userSize)
+    }
+
+})
 
 createGrid(sizeOfGrid)
