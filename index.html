@@ -6,15 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch Project</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <div class="controls">
-        <button id="resetButton">Reset Grid</button>
-        <button id="eraseMode">Erase Mode</button>
-        <button id="clearGrid">Clear Grid</button>
-        <button id="rainbowMode">Rainbow Mode</button>
-    </div>
-    <div class="container"></div>
+    <div class="container">
+        <h1 class="title">Etch-a-Sketch</h1>
+        <div class="drawing-area">
+            <!-- Grid goes here -->
+        </div>
+        <div class="controls">
+            <!-- <button id="resetButton">Reset Grid</button> -->
+            <!-- <button id="eraseMode">Erase Mode</button> -->
+            <button id="clearGrid">Clear Grid</button>
+            <button id="rainbowMode">Rainbow Mode</button>
+        </div>
     <script src="app.js"></script>
 </body>
 </html>

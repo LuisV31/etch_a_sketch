@@ -1,14 +1,112 @@
-
 .container {
-    width: 960px;
-    margin: auto 0;
+    border: 110px solid #D32424; /* Red border for the Etch-a-Sketch frame */
+    border-radius: 30px;
+    border-bottom-width: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for a 3D effect */
+    margin: 20px auto; /* Center the container */
+    width: 1153px; /* Fixed width; adjust as necessary */
+    height: 655px;
+    padding-bottom: 99px; /* Padding to prevent controls from touching the bottom border */
+    position: relative; /* Needed for absolute positioning of elements inside */
+}
+
+.title {
+    font-family: 'Permanent Marker', cursive;
+    color: #e3c70f;
+    position: absolute;
+    top: -87px;
+    left: 50%;  
+    margin: 0; /* Removes default margin to keep the title close to the top border */
+    transform: translateX(-50%);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6);
+    font-size: 3rem;
+}
+
+.drawing-area {
+    background-color: #000; /* Black background for the drawing area */
+    width: 1155px;
+    height: 648px;
+    margin: 0 auto; /* Margin around the drawing area */
+    display: flex; /* Use flexbox for the rows */
+    flex-wrap: wrap; /* Allow the rows to wrap */
+    justify-content: center; /* Center the rows horizontally */
+    align-items: start;
+    overflow: hidden  ;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px; /* Space between buttons */
+    padding: 10px; /* Padding around the buttons */
+    background: #D32424;
+    border-top: 13px solid #D32424; /* Top border to match the container's border */
+    width: calc(100% - 0px); /* Adjust width based on container's padding */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    position: absolute; /* Position the controls at the bottom */
+    bottom: 0; /* Align to the bottom of the container */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Offset by half its width to truly center */
+}
+
+button {
+    background: #F5F5F5; /* Light background for buttons */
+    color: #000; /* Black text for contrast */
+    border: 2px solid #000; /* Solid black border */
+    padding: 15px 30px; /* Padding for size */
+    font-family: 'Press Start 2P', cursive; /* Retro font for aesthetic */
+    font-size: 1.2rem;
+    height: 75px;
+    width: 250px;
+    cursor: pointer; /* Cursor to indicate clickable */
+    outline: none; /* Remove default focus outline */
+    border-radius: 15px;
+    transition: transform 0.1s ease, background-color 0.2s;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+button:hover {
+    background: #E5E5E5; /* Slightly darker on hover for feedback */
 }
 
 .grid-row {
-    display: flex;
+    display: flex; /* Display row items (cells) in a row */
+    justify-content: center; /* Center cells within the row */
 }
 
+.active-mode {
+    background-color: #a2a09e;
+    color: #FFF;
+}
+
+#rainbowMode:not(.active-mode) {
+    background-image: linear-gradient(45deg, #ff0077, #ff00ff,#7700ff, #0077ff, #00ff77, #ff7000, #ff0000);
+    color: #FFF;
+}
 .grid-box {
-    border: 1px solid black;
-    background-color:rgb(211, 217, 223)
+    box-sizing: border-box; /* Include borders in the box's dimensions */
+    border: 1px solid rgba(51, 51, 51, 0.5); /* ligher border for each cell for contrast */
+    background-color: rgb(211, 217, 223); /* Light gray background for cells */
+}
+
+@keyframes shake {
+   0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake-animation {
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
 }
